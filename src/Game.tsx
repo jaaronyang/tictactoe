@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import Board from './Board'
+import { IconButton } from '@mui/material'
+import UndoIcon from '@mui/icons-material/Undo'
+import RedoIcon from '@mui/icons-material/Redo'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
 
 function Game() {
   const [history, setHistory] = useState<string[][]>([Array(9).fill(null)])
@@ -16,25 +20,17 @@ function Game() {
     setCurrentMove(nextHistory.length - 1)
   }
 
-  function jumpTo(nextMove: number) {
-    setCurrentMove(nextMove)
+  function handleUndo() {
+    if (currentMove > 0) {
+      setCurrentMove(currentMove - 1)
+    }
   }
 
-  const moves = history.map((_, move) => {
-    let description: string
-
-    if (move > 0) {
-      description = 'Go to move #' + move
-    } else {
-      description = 'Go to game start'
+  function handleRedo() {
+    if (currentMove < history.length - 1) {
+      setCurrentMove(currentMove + 1)
     }
-
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
-      </li>
-    )
-  })
+  }
 
   function handleReset() {
     setHistory([Array(9).fill(null)])
@@ -47,8 +43,25 @@ function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <button onClick={handleReset}>Reset</button>
-        <ol>{moves}</ol>
+        <IconButton
+          onClick={handleUndo}
+          disabled={currentMove === 0}
+          aria-label="Undo"
+          size="large"
+        >
+          <UndoIcon />
+        </IconButton>
+        <IconButton onClick={handleReset} aria-label="Reset" size="large">
+          <RestartAltIcon />
+        </IconButton>
+        <IconButton
+          onClick={handleRedo}
+          disabled={currentMove === history.length - 1}
+          aria-label="Redo"
+          size="large"
+        >
+          <RedoIcon />
+        </IconButton>
       </div>
     </div>
   )
