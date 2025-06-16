@@ -1,11 +1,98 @@
 * {
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
-  font-family: sans-serif;
-  margin: 20px;
+  margin: 0;
   padding: 0;
+  background-color: #f3f3e0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.game-board {
+  background: #133e87;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.square {
+  background: #608bc1;
+  border: 2px solid #cbdceb;
+  float: left;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 60px;
+  height: 60px;
+  margin-right: -2px;
+  margin-top: -2px;
+  padding: 0;
+  text-align: center;
+  width: 60px;
+  cursor: pointer;
+  color: #f3f3e0;
+  transition: background-color 0.2s;
+}
+
+.square:hover {
+  background: #cbdceb;
+}
+
+.status {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #f3f3e0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.game-info button {
+  background: #133e87;
+  color: #f3f3e0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.game-info button:hover {
+  background: #cbdceb;
+}
+
+.game-info ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-info ol li button {
+  width: 100%;
+  min-width: 150px;
 }
 
 h1 {
@@ -44,47 +131,4 @@ code {
 
 ul {
   padding-inline-start: 20px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: sans-serif;
-  margin: 20px;
-  padding: 0;
-}
-
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
-}
-
-.board-row:after {
-  clear: both;
-  content: '';
-  display: table;
-}
-
-.status {
-  margin-bottom: 10px;
-}
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
 }
