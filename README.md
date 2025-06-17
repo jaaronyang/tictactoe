@@ -23,6 +23,10 @@ npm install
 npm run dev
 ```
 
+## Further Reading
+
+- **Medium:** [Why It's Impossible to Win (and Lose) in Tic-tac-toe](https://jaaronyang.medium.com/why-its-impossible-to-win-and-lose-in-tic-tac-toe-7533f9f60821)
+
 ## Credits
 
 - **Color Palette:** [Color Hunt](https://colorhunt.co/palette/f3f3e0133e87608bc1cbdceb)
