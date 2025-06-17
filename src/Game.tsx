@@ -4,12 +4,17 @@ import UndoIcon from '@mui/icons-material/Undo'
 import RedoIcon from '@mui/icons-material/Redo'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import Board from './Board'
+import moveSound from './assets/move-sound.mp3'
 
 function Game() {
   const [history, setHistory] = useState<string[][]>([Array(9).fill(null)])
   const [currentMove, setCurrentMove] = useState<number>(0)
   const xIsNext: boolean = currentMove % 2 === 0
   const currentSquares: string[] = history[currentMove]
+
+  function playMoveSound(): void {
+    new Audio(moveSound).play().catch(() => {})
+  }
 
   function calculateWinner(squares: string[]): string | null {
     const lines: number[][] = [
@@ -106,6 +111,7 @@ function Game() {
     ]
     setHistory(nextHistory)
     setCurrentMove(nextHistory.length - 1)
+    playMoveSound()
   }
 
   useEffect(() => {
