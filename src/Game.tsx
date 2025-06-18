@@ -172,7 +172,12 @@ function Game() {
         >
           <UndoIcon />
         </IconButton>
-        <IconButton onClick={handleReset} aria-label="Reset" size="large">
+        <IconButton
+          onClick={handleReset}
+          disabled={currentMove === 0 && history.length === 1}
+          aria-label="Reset"
+          size="large"
+        >
           <RestartAltIcon />
         </IconButton>
         <IconButton
